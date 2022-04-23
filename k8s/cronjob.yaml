@@ -1,4 +1,4 @@
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: cronjob
@@ -19,6 +19,6 @@ spec:
             - curl
             args:
             - http://bootstorage-svc:5000/api/bootstorage/deletelru
-          restartPolicy: Never  
+          restartPolicy: OnFailure  
   schedule: '*/15 * * * *'
   successfulJobsHistoryLimit: 3

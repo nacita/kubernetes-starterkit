@@ -16,7 +16,7 @@ spec:
   sessionAffinity: None
   type: ClusterIP
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
@@ -39,8 +39,8 @@ spec:
         run: bootstorage-svc
     spec:
       containers:
-      - image: bootstorage:latest
-        imagePullPolicy: Never
+      - image: samsulmaarif/k8s-samsul:bootstorage
+        imagePullPolicy: Always
         name: bootstorage-svc
         env:
           - name: REDIS_HOST

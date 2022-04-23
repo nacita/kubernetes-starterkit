@@ -16,7 +16,7 @@ spec:
   sessionAffinity: None
   type: ClusterIP
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
@@ -39,8 +39,8 @@ spec:
         run: vuecalc-svc
     spec:
       containers:
-      - image: vuecalc:latest
-        imagePullPolicy: Never
+      - image: samsulmaarif/k8s-samsul:vuecalc
+        imagePullPolicy: Always
         name: vuecalc-svc
         ports:
         - containerPort: 2000

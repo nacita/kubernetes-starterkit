@@ -47,7 +47,9 @@ spec:
   - metadata:
       name: redis-volume
     spec:
-      accessModes: [ "ReadWriteOnce" ]
+      accessModes: [ "ReadWriteMany" ]
+      storageClassName: "nfs"
+      volumeName: calculator-volume
       resources:
         requests:
-          storage: 50Mi
+          storage: 10Gi

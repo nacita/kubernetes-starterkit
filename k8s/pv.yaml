@@ -3,11 +3,18 @@ apiVersion: v1
 metadata:
   name: calculator-volume
   labels:
-    type: local
+    type: nfs
 spec:
   capacity:
-    storage: 100Mi
+    storage: 10Gi
+  volumeMode: Filesystem
   accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "pvdata"
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
+  mountOptions:
+    - hard
+    - nfsvers=4.1
+  nfs:
+    path: /k8s/nfs-share/redis-calculator
+    server: 10.10.1.13
